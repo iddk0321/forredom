@@ -1,9 +1,11 @@
 import { useTranslation } from '@/i18n/client'
 import { useViewControlStore } from '@/app/[lng]/[username]/_store/useViewControlStore'
 import { ControlledSelect } from '@/components/common'
+import { useParams } from 'next/navigation'
 
 export function UserRepositoriesViewControl() {
-  const { t } = useTranslation('sort')
+  const { lng } = useParams<{ lng: string }>()
+  const { t } = useTranslation(lng, 'sort')
 
   const selectedSort = useViewControlStore((s) => s.selectedSort)
   const setSelectedSort = useViewControlStore((s) => s.setSelectedSort)

@@ -6,14 +6,16 @@ import { formatCompactNumber } from '@/utils/formatCompactNumber'
 import Link from 'next/link'
 import { Button } from '@/components/ui'
 
-export function RepositoryDetail() {
-  const params = useParams<{ username: string; repo: string }>()
-  const { t } = useTranslation('messages')
-
-  const { data } = useUserRepositoryQuery({
-    username: params.username,
-    repo: params.repo,
-  })
+export function RepositoryDetail({
+  username,
+  repo,
+}: {
+  username: string
+  repo: string
+}) {
+  const { lng } = useParams<{ lng: string }>()
+  const { t } = useTranslation(lng, 'messages')
+  const { data } = useUserRepositoryQuery({ username, repo })
 
   return (
     <div className="flex flex-col border rounded-lg p-4 gap-2 min-w-[330px]">

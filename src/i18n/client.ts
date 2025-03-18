@@ -12,33 +12,34 @@ import {
 import resources from './i18n.json'
 import LanguageDetector from 'i18next-browser-languagedetector'
 import { getOptions, languages } from './settings'
-import { useI18n } from '@/components/common/I18nProvider'
 
 const runsOnServerSide = typeof window === 'undefined'
 
-i18next
-  .use(initReactI18next)
-  .use(LanguageDetector)
-  .init({
-    resources,
-    ...getOptions(),
-    lng: undefined,
-    detection: {
-      order: ['path', 'htmlTag', 'cookie', 'navigator'],
-    },
-    preload: runsOnServerSide ? languages : [],
-  })
+if (!i18next.isInitialized) {
+  i18next
+    .use(initReactI18next)
+    .use(LanguageDetector)
+    .init({
+      resources,
+      ...getOptions(),
+      lng: 'ko',
+      detection: {
+        order: ['path', 'htmlTag', 'cookie', 'navigator'],
+      },
+      preload: runsOnServerSide ? languages : [],
+    })
+}
 
 export function useTranslation<
   Ns extends FlatNamespace,
   KPrefix extends KeyPrefix<FallbackNs<Ns>> = undefined,
 >(
+  lng: string,
   ns?: Ns,
   options?: UseTranslationOptions<KPrefix>,
 ): UseTranslationResponse<FallbackNs<Ns>, KPrefix> {
   const ret = useTranslationOrg(ns, options)
   const { i18n } = ret
-  const { lng } = useI18n()
 
   if (runsOnServerSide && lng && i18n.resolvedLanguage !== lng) {
     i18n.changeLanguage(lng)
@@ -57,3 +58,5 @@ export function useTranslation<
   }
   return ret
 }
+
+export default i18next

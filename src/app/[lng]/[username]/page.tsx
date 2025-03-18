@@ -26,7 +26,7 @@ export default function UserRepositoryPage() {
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <Suspense fallback={<RepositoriesSkeleton />}>
           <UserRepositoriesViewControl />
-          <UserRepositories />
+          <UserRepositories username={params.username} />
         </Suspense>
       </ErrorBoundary>
     </div>
