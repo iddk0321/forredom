@@ -1,25 +1,20 @@
-import { createInstance, Namespace, FlatNamespace, KeyPrefix } from 'i18next'
-import resourcesToBackend from 'i18next-resources-to-backend'
+import { createInstance, FlatNamespace, KeyPrefix, Namespace } from 'i18next'
 import { initReactI18next } from 'react-i18next/initReactI18next'
 import { FallbackNs } from 'react-i18next'
 import { getOptions } from './settings'
+import resources from './i18n.json'
 
 const initI18next = async (lng: string, ns: string | string[]) => {
   const i18nInstance = createInstance()
-  await i18nInstance
-    .use(initReactI18next)
-    .use(
-      resourcesToBackend(
-        (language: string, namespace: string) =>
-          import(`./locales/${language}/${namespace}.json`),
-      ),
-    )
-    .init(getOptions(lng, ns))
+  await i18nInstance.use(initReactI18next).init({
+    resources,
+    ...getOptions(lng, ns),
+  })
   return i18nInstance
 }
 
 type $Tuple<T> = readonly [T?, ...T[]]
-type $FirstNamespace<Ns extends Namespace> = Ns extends readonly any[]
+type $FirstNamespace<Ns extends Namespace> = Ns extends readonly unknown[]
   ? Ns[0]
   : Ns
 

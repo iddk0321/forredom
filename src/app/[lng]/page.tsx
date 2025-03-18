@@ -1,27 +1,24 @@
-import { useTranslation } from '@/i18n'
-import { languages } from '@/i18n/settings'
-import Link from 'next/link'
+'use client'
 
-type Props = {
-  params: Promise<{ lng: string }>
-}
+import { useTranslation } from '@/i18n/client'
+import { UsernameSearchForm } from './_components/UsernameSearchForm'
+import { useParams, useRouter } from 'next/navigation'
 
-export default async function Home({ params }: Props) {
-  const { lng } = await params
-  const { t } = await useTranslation(lng, 'home')
+export default function MainPage() {
+  const { t } = useTranslation()
+  const { lng } = useParams<{ lng: string }>()
+  const router = useRouter()
+
+  const handleSubmit = (username: string) => {
+    router.push(`/${lng}/${username}`)
+  }
 
   return (
-    <>
-      <h1 className="bg-red-500 text-3xl">{t('title')}</h1>
-      {languages
-        .filter((l) => lng !== l)
-        .map((l, index) => {
-          return (
-            <Link key={index} href={`/${l}`}>
-              {t('link', { link: l })}
-            </Link>
-          )
-        })}
-    </>
+    <div className="flex w-full items-center justify-center">
+      <div className="flex flex-col h-full w-2xl items-center justify-center flex-1 max-w-3xl mx-4">
+        <h1 className="font-bold text-5xl mb-6">{t('title')}</h1>
+        <UsernameSearchForm onSubmit={handleSubmit} />
+      </div>
+    </div>
   )
 }
