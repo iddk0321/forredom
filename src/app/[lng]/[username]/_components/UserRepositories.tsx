@@ -10,9 +10,9 @@ import { useEffect } from 'react'
 import { NoDataError } from '@/api/errors'
 import InfiniteScroll from 'react-infinite-scroll-component'
 
-export function UserRepositories() {
-  const { t } = useTranslation('filter')
-  const { username } = useParams<{ username: string }>()
+export function UserRepositories({ username }: { username: string }) {
+  const { lng } = useParams<{ lng: string }>()
+  const { t } = useTranslation(lng, 'filter')
   const { data, hasNextPage, fetchNextPage } =
     useUserRepositoriesQuery(username)
 

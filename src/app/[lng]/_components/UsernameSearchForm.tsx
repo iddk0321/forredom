@@ -4,6 +4,7 @@ import { FormEvent } from 'react'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { useTranslation } from '@/i18n/client'
+import { useParams } from 'next/navigation'
 
 type SearchFormProps = {
   defaultValue?: string
@@ -14,7 +15,8 @@ export function UsernameSearchForm({
   defaultValue,
   onSubmit,
 }: SearchFormProps) {
-  const { t } = useTranslation('searchForm')
+  const { lng } = useParams<{ lng: string }>()
+  const { t } = useTranslation(lng, 'searchForm')
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()

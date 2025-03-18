@@ -16,7 +16,7 @@ import { useCookies } from 'react-cookie'
 
 export function Header() {
   const { lng } = useParams<{ lng: string }>()
-  const { t } = useTranslation()
+  const { t } = useTranslation(lng, 'common')
 
   return (
     <div className="z-10 h-16 sticky top-0 flex px-4 py-2 items-center justify-between border-b bg-background">
@@ -32,10 +32,12 @@ export function Header() {
 }
 
 function LanguageChangeDropdown() {
-  const { t } = useTranslation('languages')
+  const { lng } = useParams<{ lng: string }>()
+  const { t } = useTranslation(lng, 'languages')
+
+  const [, setCookie] = useCookies([cookieName])
   const router = useRouter()
   const pathname = usePathname()
-  const [, setCookie] = useCookies([cookieName])
 
   const handleChangeRoute = (lng: 'ko' | 'en') => {
     const segments = pathname.split('/')
@@ -64,7 +66,8 @@ function LanguageChangeDropdown() {
 }
 
 function ThemeChangeDropdown() {
-  const { t } = useTranslation('theme')
+  const { lng } = useParams<{ lng: string }>()
+  const { t } = useTranslation(lng, 'theme')
   const { setTheme } = useTheme()
 
   return (

@@ -5,8 +5,8 @@ import { UsernameSearchForm } from './_components/UsernameSearchForm'
 import { useParams, useRouter } from 'next/navigation'
 
 export default function MainPage() {
-  const { t } = useTranslation()
   const { lng } = useParams<{ lng: string }>()
+  const { t } = useTranslation(lng, 'common')
   const router = useRouter()
 
   const handleSubmit = (username: string) => {
