@@ -10,7 +10,7 @@ import {
   UserRepositories,
 } from '@/app/[lng]/[username]/_components/UserRepositories'
 import { useViewControlStore } from '@/app/[lng]/[username]/_store/useViewControlStore'
-import { repositoryMocks } from '@/mocks/data'
+import { mockRepositories } from '@/mocks/data'
 import { PAGE_SIZE } from '@/app/[lng]/[username]/_query/useUserRepositoriesQuery'
 import { Repository } from '@/types/github'
 
@@ -37,7 +37,7 @@ const renderComponent = () => {
 }
 
 const getSortedMock = (sortFn: (a: Repository, b: Repository) => number) => {
-  const mock = [...repositoryMocks].slice(0, PAGE_SIZE)
+  const mock = [...mockRepositories].slice(0, PAGE_SIZE)
   return mock.sort((a, b) => sortFn(a, b))
 }
 
@@ -73,7 +73,7 @@ describe('useUserRepositoriesQuery', () => {
       fireEvent.scroll(window, { target: { scrollY: 1000 } })
       await waitFor(() => {
         expect(screen.getAllByRole('listitem').length).toBeLessThanOrEqual(
-          repositoryMocks.length,
+          mockRepositories.length,
         )
       })
     }
