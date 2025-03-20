@@ -1,36 +1,50 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+## 설치방법
 
-First, run the development server:
+---
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 실행방법
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+##### 1. 서비스 실행
+```bash
+npm run dev
+```
 
-## Learn More
+##### 2. 스토리북 실행
+```bash
+npm run storybook
+```
 
-To learn more about Next.js, take a look at the following resources:
+##### 3. 테스트 실행
+```bash
+npm run test
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 기술 스택 설명
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+### Zustand
+- 클라이언트 사이드 전역 상태 관리에 사용
+- 리파지토리 목록 화면에서 정렬 및 필터 기능에 사용
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### React-Query
+- 비동기 데이터 요청을 보다 쉽게 관리하기 위해 사용 (API 요청 등)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Tailwind / Shadcn/ui
+- 빠르고 효율적인 스타일링을 위해 사용
+- Shadcn/ui는 tailwind 기반으로 설계 되어 호환성이 좋기 때문에 함께 사용
+
+### msw
+- 스토리북 및 테스트 코드에서 데이터를 Mocking 하기 위해 사용
+
+
+
+
