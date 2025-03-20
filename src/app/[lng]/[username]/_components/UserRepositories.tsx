@@ -69,13 +69,13 @@ function UserRepositoryItem({ data }: { data: Repository }) {
 
   return (
     <li key={data.id} className="flex justify-between items-center border-b p-2 last:border-b-0">
-      <div className="flex gap-2 min-w-0 items-center truncate">
-        <span className="font-semibold hover:underline cursor-pointer " onClick={() => handleClick(data.name)}>
+      <div className="flex gap-2 items-center flex-1 min-w-0">
+        <span className="font-semibold hover:underline cursor-pointer truncate max-w-[50%] min-w-0" onClick={() => handleClick(data.name)}>
           {data.name}
         </span>
-        <span className="text-sm text-gray-500 truncate flex-1 mr-6">{data.description}</span>
+        <span className="text-sm text-gray-500 truncate min-w-0 flex-1">{data.description}</span>
       </div>
-      <div className="flex gap-4 shrink-0">
+      <div className="flex gap-4 shrink-0 w-[170px]">
         <span className="flex items-center gap-1 text-sm text-gray-500 w-16 justify-start">
           <Star />
           {formatCompactNumber(data.stargazers_count)}

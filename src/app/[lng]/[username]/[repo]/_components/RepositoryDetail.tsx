@@ -12,7 +12,7 @@ export function RepositoryDetail({ username, repo }: { username: string; repo: s
   const { data } = useUserRepositoryQuery({ username, repo })
 
   return (
-    <div className="flex flex-col border rounded-lg p-4 gap-2 min-w-[330px]">
+    <div className="flex flex-col border rounded-lg p-4 gap-2 mx-4">
       <span className="font-bold text-3xl ">{data.name}</span>
       <span className="text-gray-500 max-w-7xl max-w-[400px]">{data.description}</span>
       <div className="flex justify-between text-gray-500 mb-4">
