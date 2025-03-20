@@ -16,7 +16,7 @@ export function Header() {
   return (
     <div className="z-10 h-16 sticky top-0 flex px-4 py-2 items-center justify-between border-b bg-background">
       <Link href={`/${lng}`}>
-        <h1 className="font-semibold">{t('title')}</h1>
+        <h1 className="font-semibold text-sm md:text-md">{t('title')}</h1>
       </Link>
       <div className="flex gap-2">
         <LanguageChangeDropdown />
