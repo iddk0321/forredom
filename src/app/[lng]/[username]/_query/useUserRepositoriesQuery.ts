@@ -1,7 +1,7 @@
 import { useSuspenseInfiniteQuery } from '@tanstack/react-query'
 import { fetchRepos } from '@/api/github'
 
-const PAGE_SIZE = 30
+export const PAGE_SIZE = 30
 
 export const useUserRepositoriesQuery = (username: string) => {
   return useSuspenseInfiniteQuery({
