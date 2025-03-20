@@ -36,6 +36,24 @@ jest.mock('@/i18n/client', () => ({
   },
 }))
 
+class MockPointerEvent extends Event {
+  button: number
+  ctrlKey: boolean
+  pointerType: string
+
+  constructor(type: string, props: PointerEventInit) {
+    super(type, props)
+    this.button = props.button || 0
+    this.ctrlKey = props.ctrlKey || false
+    this.pointerType = props.pointerType || 'mouse'
+  }
+}
+
+window.PointerEvent = MockPointerEvent as any
+window.HTMLElement.prototype.scrollIntoView = jest.fn()
+window.HTMLElement.prototype.releasePointerCapture = jest.fn()
+window.HTMLElement.prototype.hasPointerCapture = jest.fn()
+
 export const setLanguage = (lng: string) => {
   ;(useParams as jest.Mock).mockReturnValue({ lng })
 }
