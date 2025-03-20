@@ -1,6 +1,6 @@
 'use client'
 
-import { FormEvent } from 'react'
+import { FormEvent, useState } from 'react'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { useTranslation } from '@/i18n/client'
@@ -17,20 +17,20 @@ export function UsernameSearchForm({
 }: SearchFormProps) {
   const { lng } = useParams<{ lng: string }>()
   const { t } = useTranslation(lng, 'searchForm')
+  const [username, setUsername] = useState(defaultValue || '')
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    const formData = new FormData(e.currentTarget)
-    const username = formData.get('username') as string
     onSubmit(username)
   }
 
   return (
-    <form onSubmit={handleSubmit} className="w-full">
+    <form onSubmit={handleSubmit} className="w-full" role="form">
       <div className="flex gap-2 mb-2">
         <Input
           name={'username'}
-          defaultValue={defaultValue}
+          defaultValue={username}
+          onChange={(e) => setUsername(e.target.value)}
           placeholder={t('placeholder')}
         />
         <Button type="submit">{t('search')}</Button>
