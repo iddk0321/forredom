@@ -1,8 +1,4 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
 ## 설치방법
-
----
 
 ```bash
 npm install
@@ -10,7 +6,6 @@ npm install
 
 ## 실행방법
 
----
 
 ##### 1. 서비스 실행
 ```bash
@@ -28,8 +23,6 @@ npm run test
 ```
 
 ## 기술 스택 설명
-
----
 
 ### Zustand
 - 클라이언트 사이드 전역 상태 관리에 사용
