@@ -16,6 +16,7 @@ export function UserRepositoriesViewControl() {
   return (
     <div className="p-3 flex items-center justify-end gap-2 border border-b-0 rounded-tl-lg rounded-tr-lg">
       <ControlledSelect
+        name="sort"
         items={[
           {
             key: 'lastUpdate',
@@ -28,6 +29,7 @@ export function UserRepositoriesViewControl() {
         onChange={setSelectedSort}
       />
       <ControlledSelect
+        name="filter"
         items={languageItems}
         value={selectedLanguage}
         onChange={setSelectedLanguage}

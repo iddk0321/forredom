@@ -15,20 +15,18 @@ import { getOptions, languages } from './settings'
 
 const runsOnServerSide = typeof window === 'undefined'
 
-if (!i18next.isInitialized) {
-  i18next
-    .use(initReactI18next)
-    .use(LanguageDetector)
-    .init({
-      resources,
-      ...getOptions(),
-      lng: 'ko',
-      detection: {
-        order: ['path', 'htmlTag', 'cookie', 'navigator'],
-      },
-      preload: runsOnServerSide ? languages : [],
-    })
-}
+i18next
+  .use(initReactI18next)
+  .use(LanguageDetector)
+  .init({
+    resources,
+    ...getOptions(),
+    lng: undefined,
+    detection: {
+      order: ['path', 'htmlTag', 'cookie', 'navigator'],
+    },
+    preload: runsOnServerSide ? languages : [],
+  })
 
 export function useTranslation<
   Ns extends FlatNamespace,

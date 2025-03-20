@@ -14,6 +14,7 @@ export type SelectItems = {
 
 export type ControlledSelectProps = {
   items: SelectItems
+  name?: string
   value?: string
   onChange?: (value: string) => void
   placeholder?: string
@@ -21,13 +22,14 @@ export type ControlledSelectProps = {
 
 export function ControlledSelect({
   items,
+  name,
   value,
   onChange,
   placeholder = '',
 }: ControlledSelectProps) {
   return (
     <Select value={value} onValueChange={onChange}>
-      <SelectTrigger className="min-w-[140px]">
+      <SelectTrigger className="min-w-[140px]" name={name}>
         <SelectValue placeholder={placeholder} />
       </SelectTrigger>
       <SelectContent>
