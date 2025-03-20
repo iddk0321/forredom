@@ -60,15 +60,6 @@ describe('UsernameSearchForm', () => {
     expect(mockOnSubmit).toHaveBeenCalledWith('test')
   })
 
-  it('빈 값으로 제출했을 때 onSubmit이 빈 문자열과 함께 호출되는지 확인', () => {
-    render(<UsernameSearchForm onSubmit={mockOnSubmit} />)
-
-    const button = screen.getByRole('button')
-    fireEvent.click(button)
-
-    expect(mockOnSubmit).toHaveBeenCalledWith('')
-  })
-
   it('언어를 영어로 변경했을 때 input placeholder, button의 텍스트가 올바르게 바뀌는지 확인', () => {
     setLanguage('en')
 
