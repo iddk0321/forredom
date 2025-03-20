@@ -16,7 +16,7 @@ export default function MainPage() {
   return (
     <div className="flex w-full items-center justify-center">
       <div className="flex flex-col h-full w-2xl items-center justify-center flex-1 max-w-3xl mx-4">
-        <h1 className="font-bold text-3xl md:text-4xl lg:text-5xl mb-6">{t('title')}</h1>
+        <h1 className="font-bold text-2xl text-center md:text-4xl lg:text-5xl mb-6">{t('title')}</h1>
         <UsernameSearchForm onSubmit={handleSubmit} />
       </div>
     </div>
