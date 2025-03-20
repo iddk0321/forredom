@@ -2,9 +2,19 @@ import '@testing-library/jest-dom'
 import resources from './src/i18n/i18n.json'
 import { fallbackLng } from '@/i18n/settings'
 import { useParams } from 'next/navigation'
+import { TextDecoder, TextEncoder } from 'util'
+import { ReadableStream, TransformStream } from 'stream/web'
+
+Object.defineProperties(globalThis, {
+  TextDecoder: { value: TextDecoder },
+  TextEncoder: { value: TextEncoder },
+  ReadableStream: { value: ReadableStream },
+  TransformStream: { value: TransformStream },
+})
 
 jest.mock('next/navigation', () => ({
   useParams: jest.fn(() => ({ lng: fallbackLng })),
+  useRouter: jest.fn(),
 }))
 
 jest.mock('@/i18n/client', () => ({
