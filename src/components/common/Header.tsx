@@ -3,12 +3,7 @@
 import Link from 'next/link'
 import { useTranslation } from '@/i18n/client'
 import { Button } from '@/components/ui/button'
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import { useTheme } from 'next-themes'
 import { useParams, usePathname, useRouter } from 'next/navigation'
 import { cookieName } from '@/i18n/settings'
@@ -54,12 +49,8 @@ function LanguageChangeDropdown() {
         <Button variant="outline">{t('language')}</Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => handleChangeRoute('ko')}>
-          {t('ko')}
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => handleChangeRoute('en')}>
-          {t('en')}
-        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => handleChangeRoute('ko')}>{t('ko')}</DropdownMenuItem>
+        <DropdownMenuItem onClick={() => handleChangeRoute('en')}>{t('en')}</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   )
@@ -76,15 +67,9 @@ function ThemeChangeDropdown() {
         <Button variant="outline">{t('theme')}</Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme('light')}>
-          {t('light')}
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme('dark')}>
-          {t('dark')}
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme('system')}>
-          {t('system')}
-        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme('light')}>{t('light')}</DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme('dark')}>{t('dark')}</DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme('system')}>{t('system')}</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   )

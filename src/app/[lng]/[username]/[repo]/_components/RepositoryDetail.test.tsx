@@ -38,21 +38,11 @@ describe('RepositoryDetail', () => {
     await renderComponent()
 
     expect(screen.getByText(mockRepository.name)).toBeInTheDocument()
-    expect(
-      screen.getByText(mockRepository.description as string),
-    ).toBeInTheDocument()
-    expect(
-      screen.getByText(mockRepository.language as string),
-    ).toBeInTheDocument()
-    expect(
-      screen.getByText(mockRepository.stargazers_count),
-    ).toBeInTheDocument()
-    expect(
-      screen.getByText(mockRepository.forks_count as number),
-    ).toBeInTheDocument()
-    expect(
-      screen.getByText(mockRepository.open_issues_count as number),
-    ).toBeInTheDocument()
+    expect(screen.getByText(mockRepository.description as string)).toBeInTheDocument()
+    expect(screen.getByText(mockRepository.language as string)).toBeInTheDocument()
+    expect(screen.getByText(mockRepository.stargazers_count)).toBeInTheDocument()
+    expect(screen.getByText(mockRepository.forks_count as number)).toBeInTheDocument()
+    expect(screen.getByText(mockRepository.open_issues_count as number)).toBeInTheDocument()
   })
 
   it('깃허브 링크가 설정되어있는지 확인', async () => {

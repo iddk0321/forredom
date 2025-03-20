@@ -24,10 +24,7 @@ describe('UsernameSearchForm', () => {
 
     const input = screen.getByRole('textbox')
 
-    expect(input).toHaveAttribute(
-      'placeholder',
-      '사용자명을 입력하세요. ex) Forredom',
-    )
+    expect(input).toHaveAttribute('placeholder', '사용자명을 입력하세요. ex) Forredom')
     expect(input).toHaveValue('')
   })
 
@@ -68,10 +65,7 @@ describe('UsernameSearchForm', () => {
     const input = screen.getByRole('textbox')
     const button = screen.getByRole('button')
 
-    expect(input).toHaveAttribute(
-      'placeholder',
-      'Enter a username. ex) Forredom',
-    )
+    expect(input).toHaveAttribute('placeholder', 'Enter a username. ex) Forredom')
     expect(button).toHaveTextContent('Search')
   })
 })

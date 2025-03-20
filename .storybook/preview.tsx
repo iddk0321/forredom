@@ -3,6 +3,10 @@ import '../src/app/[lng]/global.css'
 import { I18nextProvider } from 'react-i18next'
 import { Preview } from '@storybook/react'
 import { QueryClientProvider } from '../src/components/common'
+import { initialize, mswLoader } from 'msw-storybook-addon'
+import { handlers } from '../src/mocks/handler'
+
+initialize()
 
 export const globalTypes = {
   locale: {
@@ -24,6 +28,9 @@ export const parameters = {
   nextjs: {
     appDirectory: true,
   },
+  msw: {
+    handlers,
+  },
 }
 
 export const decorators: Preview['decorators'] = [
@@ -39,3 +46,9 @@ export const decorators: Preview['decorators'] = [
     )
   },
 ]
+
+const preview = {
+  loaders: [mswLoader],
+}
+
+export default preview

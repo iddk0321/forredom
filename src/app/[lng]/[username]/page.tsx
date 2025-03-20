@@ -19,10 +19,7 @@ export default function UserRepositoryPage() {
 
   return (
     <div className="p-3 w-full m-auto mt-4 mb-4">
-      <UsernameSearchForm
-        onSubmit={handleSubmit}
-        defaultValue={params.username}
-      />
+      <UsernameSearchForm onSubmit={handleSubmit} defaultValue={params.username} />
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <Suspense fallback={<RepositoriesSkeleton />}>
           <UserRepositoriesViewControl />

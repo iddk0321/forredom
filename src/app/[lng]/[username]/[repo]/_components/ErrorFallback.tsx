@@ -13,15 +13,8 @@ export function ErrorFallback({ error }: { error: Error }) {
     return <MessageTemplate title={t('dataNotFoundError')} />
   }
   if (error instanceof ForbiddenError) {
-    return (
-      <MessageTemplate
-        title={t('forbiddenError')}
-        description={t('tryLater')}
-      />
-    )
+    return <MessageTemplate title={t('forbiddenError')} description={t('tryLater')} />
   }
 
-  return (
-    <MessageTemplate title={t('unknownError')} description={t('tryLater')} />
-  )
+  return <MessageTemplate title={t('unknownError')} description={t('tryLater')} />
 }

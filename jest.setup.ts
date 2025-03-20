@@ -21,12 +21,8 @@ jest.mock('@/i18n/client', () => ({
   useTranslation: (lng: 'en' | 'ko' = fallbackLng, namespace: string) => ({
     t: (key: string) => {
       return (
-        (
-          resources as Record<
-            'ko' | 'en',
-            Record<string, Record<string, string>>
-          >
-        )[lng][namespace][key] || '!!! Not Found i18n Resources !!!'
+        (resources as Record<'ko' | 'en', Record<string, Record<string, string>>>)[lng][namespace][key] ||
+        '!!! Not Found i18n Resources !!!'
       )
     },
   }),
