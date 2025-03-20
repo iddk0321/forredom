@@ -13,9 +13,7 @@ type UseViewControlStoreAction = {
   setLanguageItems: (repoLanguageItems: SelectItems) => void
 }
 
-export const useViewControlStore = create<
-  UseViewControlStoreState & UseViewControlStoreAction
->((set) => ({
+export const useViewControlStore = create<UseViewControlStoreState & UseViewControlStoreAction>((set) => ({
   selectedSort: 'lastUpdate',
   setSelectedSort: (selectedSort) => set({ selectedSort }),
   selectedLanguage: 'all',

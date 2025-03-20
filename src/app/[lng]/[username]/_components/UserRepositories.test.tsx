@@ -4,11 +4,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { Suspense } from 'react'
 import { setupServer } from 'msw/node'
 import { handlers } from '@/mocks/handler'
-import {
-  sortByLastUpdate,
-  sortByStars,
-  UserRepositories,
-} from '@/app/[lng]/[username]/_components/UserRepositories'
+import { sortByLastUpdate, sortByStars, UserRepositories } from '@/app/[lng]/[username]/_components/UserRepositories'
 import { useViewControlStore } from '@/app/[lng]/[username]/_store/useViewControlStore'
 import { mockRepositories } from '@/mocks/data'
 import { PAGE_SIZE } from '@/app/[lng]/[username]/_query/useUserRepositoriesQuery'
@@ -72,9 +68,7 @@ describe('useUserRepositoriesQuery', () => {
     for (let i = 0; i < 10; i++) {
       fireEvent.scroll(window, { target: { scrollY: 1000 } })
       await waitFor(() => {
-        expect(screen.getAllByRole('listitem').length).toBeLessThanOrEqual(
-          mockRepositories.length,
-        )
+        expect(screen.getAllByRole('listitem').length).toBeLessThanOrEqual(mockRepositories.length)
       })
     }
 
@@ -96,9 +90,7 @@ describe('useUserRepositoriesQuery', () => {
     const sortedMock = getSortedMock(sortByLastUpdate)
 
     expect(items[0]).toHaveTextContent(sortedMock[0].name)
-    expect(items[items.length - 1]).toHaveTextContent(
-      sortedMock[items.length - 1].name,
-    )
+    expect(items[items.length - 1]).toHaveTextContent(sortedMock[items.length - 1].name)
   })
 
   it('정렬이 Star순일때 Star가 많은 순서대로 정렬되어 보이는지 확인', async () => {
@@ -110,8 +102,6 @@ describe('useUserRepositoriesQuery', () => {
     const sortedMock = getSortedMock(sortByStars)
 
     expect(items[0]).toHaveTextContent(sortedMock[0].name)
-    expect(items[items.length - 1]).toHaveTextContent(
-      sortedMock[items.length - 1].name,
-    )
+    expect(items[items.length - 1]).toHaveTextContent(sortedMock[items.length - 1].name)
   })
 })

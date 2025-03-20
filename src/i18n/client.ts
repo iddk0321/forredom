@@ -28,10 +28,7 @@ i18next
     preload: runsOnServerSide ? languages : [],
   })
 
-export function useTranslation<
-  Ns extends FlatNamespace,
-  KPrefix extends KeyPrefix<FallbackNs<Ns>> = undefined,
->(
+export function useTranslation<Ns extends FlatNamespace, KPrefix extends KeyPrefix<FallbackNs<Ns>> = undefined>(
   lng: string,
   ns?: Ns,
   options?: UseTranslationOptions<KPrefix>,

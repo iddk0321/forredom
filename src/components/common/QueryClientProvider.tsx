@@ -1,10 +1,7 @@
 'use client'
 
 import { ReactNode } from 'react'
-import {
-  QueryClient,
-  QueryClientProvider as Provider,
-} from '@tanstack/react-query'
+import { QueryClient, QueryClientProvider as Provider } from '@tanstack/react-query'
 import { ReactQueryStreamedHydration } from '@tanstack/react-query-next-experimental'
 
 function makeQueryClient() {

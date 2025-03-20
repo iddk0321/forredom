@@ -26,20 +26,14 @@ describe('UserRepositoriesViewControl', () => {
 
   it('정렬 Select가 정상적으로 보이는지 확인', async () => {
     await setup('sort')
-    expect(
-      screen.getByRole('option', { name: '마지막 업데이트 순' }),
-    ).toBeInTheDocument()
+    expect(screen.getByRole('option', { name: '마지막 업데이트 순' })).toBeInTheDocument()
     expect(screen.getByRole('option', { name: 'Star 순' })).toBeInTheDocument()
   })
 
   it('필터 Select가 정상적으로 보이는지 확인', async () => {
     await setup('filter')
-    expect(
-      screen.getByRole('option', { name: 'JavaScript' }),
-    ).toBeInTheDocument()
-    expect(
-      screen.getByRole('option', { name: 'TypeScript' }),
-    ).toBeInTheDocument()
+    expect(screen.getByRole('option', { name: 'JavaScript' })).toBeInTheDocument()
+    expect(screen.getByRole('option', { name: 'TypeScript' })).toBeInTheDocument()
   })
 
   it('정렬 변경시 zustand store가 변경되는지 확인', async () => {
