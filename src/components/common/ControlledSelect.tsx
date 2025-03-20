@@ -1,10 +1,4 @@
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 
 export type SelectItems = {
   key: string
@@ -20,13 +14,7 @@ export type ControlledSelectProps = {
   placeholder?: string
 }
 
-export function ControlledSelect({
-  items,
-  name,
-  value,
-  onChange,
-  placeholder = '',
-}: ControlledSelectProps) {
+export function ControlledSelect({ items, name, value, onChange, placeholder = '' }: ControlledSelectProps) {
   return (
     <Select value={value} onValueChange={onChange}>
       <SelectTrigger className="min-w-[140px]" name={name}>

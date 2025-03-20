@@ -17,23 +17,14 @@ export function UserRepositoriesViewControl() {
     <div className="p-3 flex items-center justify-end gap-2 border border-b-0 rounded-tl-lg rounded-tr-lg">
       <ControlledSelect
         name="sort"
-        items={[
-          {
-            key: 'lastUpdate',
-            value: 'lastUpdate',
-            label: `${t('lastUpdated')}`,
-          },
-          { key: 'stars', value: 'stars', label: `${t('stars')}` },
-        ]}
         value={selectedSort}
         onChange={setSelectedSort}
+        items={[
+          { key: 'lastUpdate', value: 'lastUpdate', label: `${t('lastUpdated')}` },
+          { key: 'stars', value: 'stars', label: `${t('stars')}` },
+        ]}
       />
-      <ControlledSelect
-        name="filter"
-        items={languageItems}
-        value={selectedLanguage}
-        onChange={setSelectedLanguage}
-      />
+      <ControlledSelect name="filter" items={languageItems} value={selectedLanguage} onChange={setSelectedLanguage} />
     </div>
   )
 }

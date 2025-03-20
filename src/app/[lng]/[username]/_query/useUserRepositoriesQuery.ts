@@ -8,7 +8,6 @@ export const useUserRepositoriesQuery = (username: string) => {
     queryKey: ['repos', username],
     queryFn: ({ pageParam = 1 }) => fetchRepos(username, pageParam, PAGE_SIZE),
     initialPageParam: 1,
-    getNextPageParam: (lastPage, allPages) =>
-      lastPage.length >= PAGE_SIZE ? allPages.length + 1 : null,
+    getNextPageParam: (lastPage, allPages) => (lastPage.length >= PAGE_SIZE ? allPages.length + 1 : null),
   })
 }
