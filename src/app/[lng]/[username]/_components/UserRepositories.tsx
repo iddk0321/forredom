@@ -42,15 +42,8 @@ export function UserRepositories({ username }: { username: string }) {
           repo.language === selectedLanguage || selectedLanguage === 'all',
       )
       .sort((a, b) => {
-        if (selectedSort === 'lastUpdate') {
-          return (
-            new Date(b.updated_at ?? 0).getTime() -
-            new Date(a.updated_at ?? 0).getTime()
-          )
-        }
-        if (selectedSort === 'stars') {
-          return (b.stargazers_count ?? 0) - (a.stargazers_count ?? 0)
-        }
+        if (selectedSort === 'lastUpdate') return sortByLastUpdate(a, b)
+        if (selectedSort === 'stars') return sortByStars(a, b)
         return 0
       }) ?? []
 
@@ -110,4 +103,15 @@ function UserRepositoryItem({ data }: { data: Repository }) {
       </div>
     </li>
   )
+}
+
+export const sortByLastUpdate = (a: Repository, b: Repository) => {
+  return (
+    new Date(b.updated_at ?? 0).getTime() -
+    new Date(a.updated_at ?? 0).getTime()
+  )
+}
+
+export const sortByStars = (a: Repository, b: Repository) => {
+  return (b.stargazers_count ?? 0) - (a.stargazers_count ?? 0)
 }
