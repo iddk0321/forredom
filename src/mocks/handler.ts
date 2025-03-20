@@ -1,5 +1,5 @@
 import { http, HttpResponse } from 'msw'
-import { repositoryMocks } from '@/mocks/data'
+import { mockRepositories, mockRepository } from '@/mocks/data'
 import { PAGE_SIZE } from '@/app/[lng]/[username]/_query/useUserRepositoriesQuery'
 
 export const handlers = [
@@ -10,20 +10,12 @@ export const handlers = [
 
     const startIndex = (page - 1) * per_page
     const endIndex = startIndex + per_page
-    const paginatedRepos = repositoryMocks.slice(startIndex, endIndex)
+    const paginatedRepos = mockRepositories.slice(startIndex, endIndex)
 
     return HttpResponse.json(paginatedRepos)
   }),
 
-  http.get('https://api.github.com/repos/:username/:repo', ({ params }) => {
-    const { repo } = params
-
-    const repository = repositoryMocks.find((r) => r.name === repo)
-
-    if (!repository) {
-      return new HttpResponse(null, { status: 404 })
-    }
-
-    return HttpResponse.json(repository)
+  http.get('https://api.github.com/repos/:username/:repo', () => {
+    return HttpResponse.json(mockRepository)
   }),
 ]
