@@ -1,3 +1,5 @@
 export * from './Star'
 export * from './Issue'
 export * from './Fork'
+export * from './Globe'
+export * from './Theme'

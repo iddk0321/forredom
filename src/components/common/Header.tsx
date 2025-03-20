@@ -8,6 +8,7 @@ import { useTheme } from 'next-themes'
 import { useParams, usePathname, useRouter } from 'next/navigation'
 import { cookieName } from '@/i18n/settings'
 import { useCookies } from 'react-cookie'
+import { Globe, Theme } from '@/components/icons'
 
 export function Header() {
   const { lng } = useParams<{ lng: string }>()
@@ -46,7 +47,9 @@ function LanguageChangeDropdown() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline">{t('language')}</Button>
+        <Button variant="outline">
+          <Globe />
+        </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuItem onClick={() => handleChangeRoute('ko')}>{t('ko')}</DropdownMenuItem>
@@ -64,7 +67,9 @@ function ThemeChangeDropdown() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline">{t('theme')}</Button>
+        <Button variant="outline">
+          <Theme />
+        </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuItem onClick={() => setTheme('light')}>{t('light')}</DropdownMenuItem>
